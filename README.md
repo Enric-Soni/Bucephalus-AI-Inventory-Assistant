@@ -1,20 +1,28 @@
 Overview
+
 	Bucephalus AI Inventory Assistant is a Microsoft Excel task-pane add-in which has been designed to analyze inventory workbooks that may contain multiple worksheets, inconsistent headings, different sources of products, currencies, units of measure, sale histories, and purchase orders.
 	The very original version of this software expects one simple Excel table named “InventoryTable” with a fixed structure. This version can still be found when the “Simple Table Fallback” button is clicked on the add-in. Since then, each version has come with new exposure to different, more complex workbooks. These incremental versions now scan the entire workbook, are able to identify inventory-related data, propose a method to interpret each column, and then allows the user to manually map or review any uncertain mappings before the calculations begin.
-	The software then consolidates the different parts of each data, including inventory, sales, and supply. It also calculates the valuation and then provides a forecast with reorder calculations. All calculations are straightforward formulas implemented in TypeScript. Botpress is an AI chatbot specifically trained to meet this add-in’s needs and implemented within the add-in, and is 
+	The software then consolidates the different parts of each data, including inventory, sales, and supply. It also calculates the valuation and then provides a forecast with reorder calculations. All calculations are straightforward formulas implemented in TypeScript. Botpress is an AI chatbot specifically trained to meet this add-in’s needs and implemented within the add-in.
 
 Layers
+
 Excel integration
+
 Next.js/React for the interface
+
 Inventory analysis engine
+
 Botpress integration
 
 Individual Breakdown of Each Layer
+
 Excel Integration
+
 	Office.js connects the add-in to the whichever workbook is currently open. Office.js allows the add-in to read worksheets and Excel tables; read those cell values and formulas; identity sheet, table, row, and column locations; create new output worksheets; and leave all original worksheets unchanged.
 	The main workbook-access code is in excel.ts. Microsoft Excel loads the add-in through manifest.xml, which identifies the task-pane URL, add-in name, icons, permissions, and ribbon command.
 
 Next.js/React for the interface
+
 	React manages the interactiveness of the software, including the detected datasets, user mappings, warning confirmations, duplicate decisions, analysis results, and chatbot status.
 	The primary interface is in page.tsx. The mapping and warning validating itself is separate in EnterpriseImportReview.tsx.
 
@@ -30,6 +38,7 @@ Review the generated Excel spreadsheets
 Share the results with Botpress and ask questions at user’s discretion
 
 Inventory Analysis Engine
+
 	Most processing runs within the TypesScript in the task pane. It does not need any external server to calculate results. The add-in itself separates its logic into multiple smaller parts, so it becomes easier to work on them. Those are the following:
 Getting the workbook
 Matching headers
@@ -42,9 +51,11 @@ Duplicate detection
 Inventory consolidation
 Forecasting
 Warnings
+
 	For example, discovery.ts finds potential datasets, normalize.ts creates standardized records, and consolidation.ts produces the final SKU-location analysis.
 
 Botpress Integration
+
 	Botpress is embedded within the Excel task pane through BotpressChatbox.tsx. The embedding process can be seen as follows:
 Botpress agent is published
 Webchat is enabled in embedded mode
@@ -54,9 +65,11 @@ Large contexts are divided into smaller, ordered messages (due to the 100 KB siz
 Botpress receives the workbook context before answering workbook questions
 
 The user must explicitly approve sharing the workbook. The results can include, but not limited to, source rows, formulas, mappings, lineage, excluded record, exceptions, forecasts, and verified results.
+
 Botpress is instructed to treat Bucephalus calculations as the standard. It can explain results and answer questions, but will be unable to calculate or override quantities itself, convert currencies, come up with independent forecasts, or recommendations.
 
 Testing
+
 	This software uses Vitest for automated testing, ESLint for code-quality checks, and the Next.js production build for TypeScript and deployment validation.
 	All 19 tests are listed below, and they all currently pass.
 Renamed and reordered datasets
