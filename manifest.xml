@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+  <Id>cd2a98a3-844d-4f25-9a17-4c48c094bb09</Id>
+  <Version>1.0.0.2</Version>
+  <ProviderName>Bucephalus</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Bucephalus AI Inventory Assistant"/>
+  <Description DefaultValue="Analyze inventory health and generate grounded AI summaries."/>
+  <IconUrl DefaultValue="https://localhost:3000/icon-32.png?v=bucephalus-horse-1"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/icon-80.png?v=bucephalus-horse-1"/>
+  <SupportUrl DefaultValue="https://localhost:3000"/>
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+    <AppDomain>https://cdn.botpress.cloud</AppDomain>
+    <AppDomain>https://files.bpcontent.cloud</AppDomain>
+    <AppDomain>https://webchat.botpress.cloud</AppDomain>
+    <AppDomain>https://chat.botpress.cloud</AppDomain>
+  </AppDomains>
+  <Hosts><Host Name="Workbook"/></Hosts>
+  <DefaultSettings><SourceLocation DefaultValue="https://localhost:3000"/></DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted><Title resid="GetStarted.Title"/><Description resid="GetStarted.Description"/><LearnMoreUrl resid="GetStarted.LearnMoreUrl"/></GetStarted>
+          <FunctionFile resid="Taskpane.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Inventory.Group">
+                <Label resid="Inventory.GroupLabel"/>
+                <Icon><bt:Image size="16" resid="Icon.16x16"/><bt:Image size="32" resid="Icon.32x32"/><bt:Image size="80" resid="Icon.80x80"/></Icon>
+                <Control xsi:type="Button" id="Inventory.ShowTaskpane">
+                  <Label resid="Inventory.ButtonLabel"/><Supertip><Title resid="Inventory.ButtonLabel"/><Description resid="Inventory.ButtonDescription"/></Supertip>
+                  <Icon><bt:Image size="16" resid="Icon.16x16"/><bt:Image size="32" resid="Icon.32x32"/><bt:Image size="80" resid="Icon.80x80"/></Icon>
+                  <Action xsi:type="ShowTaskpane"><TaskpaneId>ButtonId1</TaskpaneId><SourceLocation resid="Taskpane.Url"/></Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images><bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/icon-16.png?v=bucephalus-horse-1"/><bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/icon-32.png?v=bucephalus-horse-1"/><bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/icon-80.png?v=bucephalus-horse-1"/></bt:Images>
+      <bt:Urls><bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://learn.microsoft.com/office/dev/add-ins/"/><bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000"/></bt:Urls>
+      <bt:ShortStrings><bt:String id="GetStarted.Title" DefaultValue="Bucephalus AI Inventory Assistant is ready"/><bt:String id="Inventory.GroupLabel" DefaultValue="Bucephalus"/><bt:String id="Inventory.ButtonLabel" DefaultValue="Analyze Inventory"/></bt:ShortStrings>
+      <bt:LongStrings><bt:String id="GetStarted.Description" DefaultValue="Open the task pane to analyze InventoryTable."/><bt:String id="Inventory.ButtonDescription" DefaultValue="Open the AI Inventory Assistant task pane."/></bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
