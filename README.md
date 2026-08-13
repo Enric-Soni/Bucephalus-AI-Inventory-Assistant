@@ -3,20 +3,20 @@ Bucephalus AI Inventory Assistant
 A web-based inventory analysis tool built with Next.js and TypeScript. The application allows users to upload inventory workbooks, analyze product and inventory data, and generate useful inventory insights.
 
 Requirements
-Node.js
-npm
-Microsoft Excel
+     Node.js
+     npm
+     Microsoft Excel
 Setup
 
 Clone the repository and open the project folder in Terminal.
 
 Install the required dependencies:
 
-npm install
+     npm install
 
 Start the development server:
 
-npm run dev
+     npm run dev
 
 Then open the local address shown in the Terminal.
 
@@ -32,6 +32,7 @@ lib/ — inventory analysis and processing logic
 public/ — images and other public assets
 manifest.xml — Excel add-in configuration
 READ THIS WRITE-UP FIRST/ — setup instructions, documentation, and example workbooks
+
 Notes
 
-node_modules is not included in the repository. Run npm install after cloning the project to install all required dependencies.
+     node_modules is not included in the repository. Run npm install after cloning the project to install all required dependencies.
